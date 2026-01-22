@@ -86,3 +86,9 @@ AWS_DEFAULT_REGION=ap-southeast-2
 AWS_BUCKET=your_bucket_name
 ```
 
+## Gọi API 
+Ví dụ
+```bash
+http://localhost/ungdungdiemdanhsinhvienAWS/BE/public/api/lists
+```
+
