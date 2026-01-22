@@ -1,61 +1,88 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Ứng dụng điểm danh sinh viên sử dụng AWS (Backend)
+## Giới thiệu
+Đây là **Backend** của hệ thống **điểm danh sinh viên sử dụng AWS**, phục vụ cho việc:
+- Quản lý sinh viên, giảng viên
+- Điểm danh sinh viên
+- Xác thực người dùng bằng JWT
+- Gửi email (reset mật khẩu, thông báo)
+- Tích hợp AWS (S3, Rekognition)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Backend được xây dựng bằng **Laravel Framework**, cung cấp API cho ứng dụng Frontend / Mobile.
 
-## About Laravel
+## Công nghệ sử dụng
+- **PHP** >= 8.3
+- **Laravel Framework**
+- **MySQL**
+- **JWT Authentication**
+- **AWS S3 / Rekognition**
+- **Gmail SMTP**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Setup môi trường (Backend Laravel)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 1. Yêu cầu hệ thống
+- PHP >= 8.3
+- Composer
+- MySQL
+- Git
+- WAMP / XAMPP / Laragon
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 2. Clone source
+```bash
+git clone https://github.com/khanhan0603/ungdungdiemdanhsinhvienAWS.git
+cd ungdungdiemdanhsinhvienAWS/BE
+```
+### 3. Cài đặt thư viện
+```bash
+composer install
+```
 
-## Learning Laravel
+### 4. Tạo file cấu hình môi trường
+```bash
+cp .env.example .env
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 5. Sinh APP_KEY
+```bash
+php artisan key:generate
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 6. Cấu hình database
+tạo database và import file sql trong thư mục database.
+cấu hình lại trong .env
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=ungdungdiemdanhsinhvien
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Cấu hình JWT
+tạo JWT Secret
+```bash
+php artisan jwt:secret
+```
 
-## Laravel Sponsors
+## Cấu hình Email(Gmail SMTP)
+MAIL_PASSWORD sử dụng Gmail App Password (không dùng mật khẩu Gmail chính). Cần bật 2-Step Verification cho tài khoản Gmail.
+Ví dụ:
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=a@gmail.com
+MAIL_PASSWORD=gmail-app-password
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="a@gmail.com"
+MAIL_FROM_NAME="Quản lý giảng viên"
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Cấu hình AWS (nếu có)
+```env
+AWS_ACCESS_KEY_ID=your_access_key
+AWS_SECRET_ACCESS_KEY=your_secret_key
+AWS_DEFAULT_REGION=ap-southeast-2
+AWS_BUCKET=your_bucket_name
+```
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
