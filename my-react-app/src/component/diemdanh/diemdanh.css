@@ -1,0 +1,249 @@
+.app-diemdanh{
+margin-top:  2rem;
+text-align: center;
+}
+.success{
+    padding: 1 rem;
+    color: green;
+}
+.failure{
+    padding: 1rem;
+    color: red;
+}
+/* DiemDanh.css */
+
+.app-diemdanh {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.app-diemdanh h2 {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 28px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Webcam container */
+.webcam-frame {
+  display: block;
+  margin: 0 auto 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 5px solid #fff;
+  overflow: hidden;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Nút chụp ảnh chính */
+.authenticate {
+  display: block;
+  width: 280px;
+  margin: 0 auto 30px;
+  padding: 16px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(45deg, #3498db, #2980b9);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.authenticate:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(52, 152, 219, 0.5);
+  background: linear-gradient(45deg, #2980b9, #1f6391);
+}
+
+.authenticate:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.authenticate svg {
+  font-size: 24px;
+}
+
+/* Danh sách sinh viên nhận diện */
+.matched-list {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  margin: 25px 0;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.matched-list h4 {
+  margin-top: 0;
+  color: #27ae60;
+  font-size: 20px;
+  border-bottom: 2px solid #27ae60;
+  padding-bottom: 8px;
+}
+
+.matched-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0 0;
+}
+
+.matched-list li {
+  padding: 12px 0;
+  border-bottom: 1px dashed #ddd;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.matched-list li:last-child {
+  border-bottom: none;
+}
+
+.matched-list b {
+  color: #2c3e50;
+  font-size: 17px;
+}
+
+/* Thông báo kết quả */
+.success,
+.failure {
+  text-align: center;
+  padding: 18px;
+  margin: 25px 0;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  animation: fadeIn 0.5s ease;
+}
+
+.success {
+  background: linear-gradient(135deg, #d4edda, #c3e6cb);
+  color: #155724;
+  border: 2px solid #c3e6cb;
+}
+
+.failure {
+  background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+  color: #721c24;
+  border: 2px solid #f5c6cb;
+}
+
+/* Nút hành động dưới cùng */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.action-buttons button {
+  padding: 14px 28px;
+  font-size: 17px;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  min-width: 180px;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.action-buttons button:first-child {
+  background: linear-gradient(45deg, #7f8c8d, #95a5a6);
+  color: white;
+}
+
+.action-buttons button:first-child:hover {
+  background: linear-gradient(45deg, #6c757d, #7f8c8d);
+  transform: translateY(-2px);
+}
+
+.action-buttons button:last-child {
+  background: linear-gradient(45deg, #e74c3c, #c0392b);
+}
+
+.action-buttons button:last-child:hover:not(:disabled) {
+  background: linear-gradient(45deg, #c0392b, #a93226);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(231, 76, 60, 0.4);
+}
+
+.action-buttons button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app-diemdanh {
+    padding: 20px 15px;
+  }
+
+  .app-diemdanh h2 {
+    font-size: 24px;
+  }
+
+  .webcam-frame {
+    width: 100%;
+    height: auto;
+  }
+
+  .authenticate {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .action-buttons button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .matched-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+}
